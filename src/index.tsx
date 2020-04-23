@@ -5,3 +5,7 @@ import { App } from './App';
 import './style.scss';
 
 render(<App />, document.getElementById('root'));
+
+if (module.hot) {
+	module.hot.accept();
+}
