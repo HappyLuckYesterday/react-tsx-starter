@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { render } from "react-dom";
 import { ButtonCounter } from './components/ButtonCounter';
 
-const App = () => {
+export const App = () => {
 	const [name] = useState('Hello React Button');
 
 	const onChildClicked = (e) => {
@@ -19,5 +18,3 @@ const App = () => {
 		</div>
 	);
 };
-
-render(<App />, document.getElementById('root'));

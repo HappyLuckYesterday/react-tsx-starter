@@ -9,89 +9,87 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env, argv) => {
 
-    return {
-        context: path.resolve(__dirname, './src'),
+	return {
+		context: path.resolve(__dirname, './src'),
 
-        entry: {
-            app: './app.tsx'
-        },
+		entry: { app: './index.tsx' },
 
-        output: {
-            filename: '[name].[contenthash].bundle.js',
-            chunkFilename: '[name].[contenthash].bundle.js',
-            path: path.resolve(__dirname, 'dist'),
-        },
+		output: {
+			filename: '[name].[contenthash].bundle.js',
+			chunkFilename: '[name].[contenthash].bundle.js',
+			path: path.resolve(__dirname, 'dist'),
+		},
 
-        devtool: "source-map",
+		devtool: "source-map",
 
-        resolve: { extensions: ['.ts', '.tsx', '.js', '.jsx'] },
+		resolve: { extensions: ['.ts', '.tsx', '.js', '.jsx'] },
 
-        module: {
-            rules: [
-                { test: /\.tsx?$/, loader: 'ts-loader' }, // , options: { transpileOnly: true }
-                {
-                    test: /\.scss$/,
-                    use: [
-                        MiniCssExtractPlugin.loader,
-                        "css-loader",
-                        "sass-loader"
-                    ]
-                },
-                { test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, loader: 'file-loader?name=assets/[name].[ext]' },
-                {
-                    test: /\.(png|jpg|gif)$/,
-                    use: [
-                        {
-                            loader: 'file-loader',
-                            options: {
-                                name: '[name].[ext]',
-                                outputPath: 'assets/img',
-                                publicPath: 'assets/img'
-                            }
-                        }
-                    ]
-                }
-            ],
-        },
+		module: {
+			rules: [
+				{ test: /\.tsx?$/, loader: 'ts-loader' }, // , options: { transpileOnly: true }
+				{
+					test: /\.scss$/,
+					use: [
+						MiniCssExtractPlugin.loader,
+						"css-loader",
+						"sass-loader"
+					]
+				},
+				{ test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, loader: 'file-loader?name=assets/[name].[ext]' },
+				{
+					test: /\.(png|jpg|gif)$/,
+					use: [
+						{
+							loader: 'file-loader',
+							options: {
+								name: '[name].[ext]',
+								outputPath: 'assets/img',
+								publicPath: 'assets/img'
+							}
+						}
+					]
+				}
+			],
+		},
 
-        plugins: [
-            new CleanWebpackPlugin(),
-            new HtmlWebpackPlugin({
-                template: "./index.html",
-                title: 'React Tsx Template',
-                filename: "index.html",
-                chunksSortMode: "manual",
-                chunks: ['vendors', 'app'],
-                // favicon: 'favicon.ico'
-            }),
-            new MiniCssExtractPlugin({
-                filename: "style.css",
-                chunkFilename: "style.css"
-            }),
-            new CopyWebpackPlugin([
-                // copy static assets here
-            ]),
-            new webpack.DefinePlugin({
-                // define environment vars here
-            })
-        ],
+		plugins: [
+			new CleanWebpackPlugin(),
+			new HtmlWebpackPlugin({
+				template: "./index.html",
+				title: 'React Tsx Template',
+				filename: "index.html",
+				chunksSortMode: "manual",
+				chunks: ['vendors', 'app'],
+				// favicon: 'favicon.ico'
+			}),
+			new MiniCssExtractPlugin({
+				filename: "style.css",
+				chunkFilename: "style.css"
+			}),
+			new CopyWebpackPlugin([
+				// copy static assets here
+			]),
+			new webpack.DefinePlugin({
+				// define environment vars here
+			})
+		],
 
-        optimization: {
-            splitChunks: {
-                cacheGroups: {
-                    commons: { test: /[\\/]node_modules[\\/]/, name: "vendors", chunks: "all" }
-                }
-            },
-            minimizer: [
-                new UglifyJsPlugin({
-                    uglifyOptions: {
-                        output: {
-                            comments: false
-                        }
-                    }
-                }),
-                new OptimizeCSSAssetsPlugin({})
-            ]
-        }
-    }
+		optimization: {
+			splitChunks: {
+				cacheGroups: {
+					commons: { test: /[\\/]node_modules[\\/]/, name: "vendors", chunks: "all" }
+				}
+			},
+			minimizer: [
+				new UglifyJsPlugin({
+					uglifyOptions: {
+						output: {
+							comments: false
+						}
+					}
+				}),
+				new OptimizeCSSAssetsPlugin({})
+			]
+		}
+	}
 }
