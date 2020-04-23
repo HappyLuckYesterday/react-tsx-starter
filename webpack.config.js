@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env, argv) => {
 
@@ -28,7 +28,7 @@ module.exports = (env, argv) => {
 
         module: {
             rules: [
-                { test: /\.tsx?$/, loader: 'ts-loader', options: { transpileOnly: true } },
+                { test: /\.tsx?$/, loader: 'ts-loader' }, // , options: { transpileOnly: true }
                 {
                     test: /\.scss$/,
                     use: [
@@ -55,14 +55,14 @@ module.exports = (env, argv) => {
         },
 
         plugins: [
-            new CleanWebpackPlugin(['dist']),
+            new CleanWebpackPlugin(),
             new HtmlWebpackPlugin({
                 template: "./index.html",
-                title: 'react Tsx Template',
+                title: 'React Tsx Template',
                 filename: "index.html",
                 chunksSortMode: "manual",
                 chunks: ['vendors', 'app'],
-                favicon: 'favicon.ico'
+                // favicon: 'favicon.ico'
             }),
             new MiniCssExtractPlugin({
                 filename: "style.css",

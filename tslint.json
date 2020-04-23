@@ -43,7 +43,7 @@
 		"no-arg": true,
 		"no-bitwise": true,
 		"no-console": [
-			true,
+			true
 		],
 		"no-construct": true,
 		"no-debugger": true,
