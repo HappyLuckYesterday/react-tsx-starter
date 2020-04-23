@@ -1,12 +1,23 @@
-import * as React from "react";
-import { render } from 'react-dom';
+import React, { useState } from "react";
+import { render } from "react-dom";
+import { ButtonCounter } from './components/ButtonCounter';
 
 const App = () => {
+	const [name] = useState('Hello React Button');
+
+	const onChildClicked = (e) => {
+		console.warn("callback from parent triggered", e);
+	};
+
 	return (
-		<div className="container py-2">
-			test
+		<div>
+			<p>Simple React Typescript Starter</p>
+			<ButtonCounter
+				name={name}
+				onClicked={e => onChildClicked(e)}
+			/>
 		</div>
-	)
-}
+	);
+};
 
 render(<App />, document.getElementById('root'));
