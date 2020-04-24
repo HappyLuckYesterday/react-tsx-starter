@@ -1,20 +1,27 @@
 import React, { useState } from "react";
-import { ButtonCounter } from './components/ButtonCounter';
+import { Route, Switch, Link } from "react-router-dom";
+import { Menu } from './components/Menu';
+import { Home } from './pages/Home';
+import { About } from './pages/About';
 
 export const App = () => {
-	const [name] = useState('Hello React Button');
-
-	const onChildClicked = (e) => {
-		console.warn("callback from parent triggered", e);
-	};
+	const [name] = useState('React Starter Template');
 
 	return (
-		<div>
-			<p>Simple React Typescript Starter</p>
-			<ButtonCounter
-				name={name}
-				onClicked={e => onChildClicked(e)}
-			/>
-		</div>
+		<>
+			<Menu title={name} />
+
+			<div className="p-2">
+				<Switch>
+					<Route exact path="/">
+						<Home />
+					</Route>
+					<Route exact path="/about">
+						<About />
+					</Route>
+					<Route render={() => <div>Miss</div>} />
+				</Switch>
+			</div>
+		</>
 	);
 };

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 interface ButtonCounterProps {
-	onClicked: Function;
+	onClick: Function;
 	name: string;
 }
 interface ButtonCounterState {
@@ -15,13 +15,9 @@ export class ButtonCounter extends Component<ButtonCounterProps, ButtonCounterSt
 		this.state = { count: 0 };
 	}
 
-	// componentDidMount() {
-	//     this.setState({ count: 0 });
-	// }
-
 	handleClick() {
 		this.setState({ count: this.state.count + 1 });
-		this.props.onClicked(this.state.count);
+		this.props.onClick(this.state.count);
 	}
 
 	render() {
