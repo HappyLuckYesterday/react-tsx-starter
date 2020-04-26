@@ -1,3 +1,3 @@
 export * from './About';
-export * from './Forms';
+export * from './FormsSimple';
 export * from './Home';
