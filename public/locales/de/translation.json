@@ -1,0 +1,7 @@
+{
+	"Welcome to React": "Welcome to React and react-i18next",
+	"welcomeMsg": "willkommen",
+	"nested": {
+		"startMsg": "start in german"
+	}
+}
