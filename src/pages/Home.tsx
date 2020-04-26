@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonCounter } from "../components/ButtonCounter";
+import { ButtonCounter } from "../components/ButtonCounter/ButtonCounter";
 
 export const Home = () => {
 	const handleClick = () => {

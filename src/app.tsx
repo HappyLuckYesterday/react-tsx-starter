@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import { withTranslation, useTranslation } from "react-i18next";
-import { Menu } from './components/Menu';
-import { Home } from './pages/Home';
-import { About } from './pages/About';
+import { Menu } from './components';
+import { Home, About } from './pages';
 
 export const App = () => {
 	const [name] = useState('React Starter Template');
