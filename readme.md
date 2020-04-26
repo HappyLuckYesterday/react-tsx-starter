@@ -2,7 +2,14 @@
 
 
 ## Component Types
-- Functional Dumb Component
+
+### Functional Dumb Component
+```js
+export const FunctionalDumbComponent = (props) => (
+	<div>{props.title}</div>
+);
+```
+
 - Functional Param Component
 - Hook Component
 - Class Component
