@@ -44,8 +44,39 @@ App.tsx
 </Switch>
 ```
 
+
 ## i18n
-TODO
+
+```
+npm install i18next
+npm install react-i18next
+npm install i18next-xhr-backend
+npm install i18next-browser-languagedetector
+```
+
+### create structure
+
+- create folder "public" in root
+- create folder "locales" inside "public"
+- create folders for each locale - i.e. "en"
+- create file "translation.json" for each locale
+
+### update webpack.config
+
+```js
+// ... 
+plugins: [
+	// ... 
+	new CopyWebpackPlugin([
+		{
+			from: path.resolve(__dirname, 'public'),
+			to: 'public'
+		},
+	]),
+	// ... 
+]
+// ...
+```
 
 
 ## form & form validation

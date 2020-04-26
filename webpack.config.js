@@ -67,7 +67,10 @@ module.exports = (env, argv) => {
 				chunkFilename: "style.css"
 			}),
 			new CopyWebpackPlugin([
-				// copy static assets here
+				{
+					from: path.resolve(__dirname, 'public'),
+					to: 'public'
+				},
 			]),
 			new webpack.DefinePlugin({
 				// define environment vars here
