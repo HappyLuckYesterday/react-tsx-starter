@@ -1,5 +1,4 @@
 # React Typescript Webpack Template
-test2
 
 ## Component Types
 
