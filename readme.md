@@ -5,7 +5,9 @@ test2
 
 ### Functional Dumb Component
 ```js
-export const FunctionalDumbComponent = props => <div>{props.title}</div>;
+export const FunctionalDumbComponent = (props) => (
+	<div>{props.title}</div>
+);
 ```
 
 - Functional Param Component
