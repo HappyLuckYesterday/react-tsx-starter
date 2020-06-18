@@ -14,16 +14,16 @@ export const App = () => {
 	};
 
 	return (
-		<>
+		<div>
 			<Menu title={name} />
 
-			<div>
-				<h1>{t("welcomeMsg")}</h1>
-				<button onClick={() => changeLanguage("de")}>de</button>
-				<button onClick={() => changeLanguage("en")}>en</button>
-			</div>
-
 			<div className="p-2">
+				<div>
+					<h1>{t("welcomeMsg")}</h1>
+					<button className="btn btn-secondary" onClick={() => changeLanguage("de")}>de</button>
+					<button className="btn btn-secondary" onClick={() => changeLanguage("en")}>en</button>
+				</div>
+
 				<Switch>
 					<Route exact path="/">
 						<Home />
@@ -44,7 +44,7 @@ export const App = () => {
 					<Route render={() => <div>404 - Missing!</div>} />
 				</Switch>
 			</div>
-		</>
+		</div>
 	);
 };
 
