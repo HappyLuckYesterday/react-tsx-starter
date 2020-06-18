@@ -1,6 +1,5 @@
 # React Typescript Webpack Template
 
-
 ## Component Types
 
 ### Functional Dumb Component

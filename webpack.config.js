@@ -66,12 +66,14 @@ module.exports = (env, argv) => {
 				filename: "style.css",
 				chunkFilename: "style.css"
 			}),
-			new CopyWebpackPlugin([
-				{
-					from: path.resolve(__dirname, 'public'),
-					to: 'public'
-				},
-			]),
+			new CopyWebpackPlugin({
+				patterns: [
+					{
+						from: path.resolve(__dirname, 'public'),
+						to: 'public'
+					},
+				]
+			}),
 			new webpack.DefinePlugin({
 				// define environment vars here
 			})
