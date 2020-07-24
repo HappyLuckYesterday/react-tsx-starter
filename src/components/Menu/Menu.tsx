@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { withRouter, RouteComponentProps } from "react-router-dom";
+import React, { useState } from 'react';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 interface IMenuProps extends RouteComponentProps {
 	title: string;
@@ -9,11 +9,11 @@ function MenuComponent({ history, title }: IMenuProps) {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const menuItems = [
-		{ name: "home", label: "Home", path: "/" },
-		{ name: "forms-simple", label: "Forms simple", path: "/forms-simple" },
-		{ name: "forms-service", label: "FormsService", path: "/forms-service" },
-		{ name: "forms-generic", label: "FormsGeneric", path: "/forms-generic" },
-		{ name: "about", label: "About", path: "/about" }
+		{ name: 'home', label: 'Home', path: '/' },
+		{ name: 'forms-simple', label: 'Forms simple', path: '/forms-simple' },
+		{ name: 'forms-service', label: 'FormsService', path: '/forms-service' },
+		{ name: 'forms-generic', label: 'FormsGeneric', path: '/forms-generic' },
+		{ name: 'about', label: 'About', path: '/about' }
 	];
 
 	const handleMenuBtnClick = () => {
@@ -30,11 +30,12 @@ function MenuComponent({ history, title }: IMenuProps) {
 			<a className="navbar-brand" href="#">
 				{title}
 			</a>
-			<button className="navbar-toggler" onClick={handleMenuBtnClick}>
+
+			<button type="button" className="navbar-toggler" onClick={handleMenuBtnClick}>
 				<span className="navbar-toggler-icon" />
 			</button>
 
-			<div className={"collapse navbar-collapse" + (isOpen ? " show" : "")}>
+			<div className={'collapse navbar-collapse' + (isOpen ? ' show' : '')}>
 				<ul className="navbar-nav mr-auto">
 					{menuItems.map(i => (
 						<li

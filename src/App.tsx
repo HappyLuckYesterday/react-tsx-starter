@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { Route, Switch } from "react-router-dom";
-import { withTranslation, useTranslation } from "react-i18next";
+import React, { useState } from 'react';
+import { useTranslation, withTranslation } from 'react-i18next';
+import { Route, Switch } from 'react-router-dom';
 import { Menu } from './components';
-import { Home, About, FormsSimple, FormsService, FormsGeneric, ShowcaseButton } from './pages';
+import { About, Home, ShowcaseButton } from './pages';
 
 export const App = () => {
 	const [name] = useState('React Starter Template');
 
 	const { t, i18n } = useTranslation();
 
-	const changeLanguage = lng => {
+	const changeLanguage = (lng) => {
 		i18n.changeLanguage(lng);
 	};
 
@@ -19,9 +19,9 @@ export const App = () => {
 
 			<div className="p-2">
 				<div>
-					<h1>{t("welcomeMsg")}</h1>
-					<button className="btn btn-secondary" onClick={() => changeLanguage("de")}>de</button>
-					<button className="btn btn-secondary" onClick={() => changeLanguage("en")}>en</button>
+					<h1>{t('welcomeMsg')}</h1>
+					<button type="button" className="btn btn-secondary" onClick={() => changeLanguage('de')}>de</button>
+					<button type="button" className="btn btn-secondary" onClick={() => changeLanguage('en')}>en</button>
 				</div>
 
 				<Switch>

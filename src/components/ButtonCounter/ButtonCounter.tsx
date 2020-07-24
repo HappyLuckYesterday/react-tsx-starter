@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 interface ButtonCounterProps {
 	onClick: Function;
@@ -16,13 +16,14 @@ export class ButtonCounter extends Component<ButtonCounterProps, ButtonCounterSt
 	}
 
 	handleClick() {
-		this.setState({ count: this.state.count + 1 });
+		this.setState(prevState => ({ count: prevState.count + 1 }));
 		this.props.onClick(this.state.count);
 	}
 
 	render() {
 		return (
 			<button
+				type="button"
 				onClick={() => this.handleClick()}
 				className="btn btn-outline-secondary"
 			>
