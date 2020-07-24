@@ -1,28 +1,57 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 export const FormsSimple = () => {
 
 	const [values, setValues] = useState({
-		gender: "",
-		firstName: "",
-		lastName: "",
-		birthdate: "",
-		email: "",
+		gender: '',
+		firstName: '',
+		lastName: '',
+		birthdate: '',
+		email: '',
 		agb: false,
-		options: ""
+		options: ''
 	});
 
 	const [formErrors, setFormErrors] = useState({
-		firstNameRequired: "",
-		lastNameRequired: "",
-		emailRequired: "",
-		emailValid: "",
-		agbRequired: ""
+		firstNameRequired: '',
+		lastNameRequired: '',
+		emailRequired: '',
+		emailValid: '',
+		agbRequired: ''
 	});
+
+	const validateField = (fieldName, value, checked) => {
+		switch (fieldName) {
+			case 'firstName':
+				formErrors.firstNameRequired = value === '' ? 'Firstname is required' : '';
+				break;
+			case 'lastName':
+				formErrors.lastNameRequired = value === '' ? 'Lastname is required' : '';
+				break;
+			case 'email':
+				formErrors.emailRequired = !value ? 'E-Mail is required' : '';
+				formErrors.emailValid = value && !value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) ? 'E-Mail format is invalid' : '';
+				break;
+			case 'agb':
+				formErrors.agbRequired = !checked ? 'AGB is required' : '';
+				break;
+			default:
+				break;
+		}
+		setFormErrors({ ...formErrors });
+	};
+
+	const validateFields = () => {
+		const keys = Object.keys(values);
+		keys.map(k => validateField(k, values[k], values[k]));
+		// for (let key of keys) {
+		// 	validateField(key, values[key], values[key]);
+		// }
+	};
 
 	const handleInputChange = e => {
 		const { name, value, checked } = e.target;
-		if (e.target.type === "checkbox") {
+		if (e.target.type === 'checkbox') {
 			setValues({ ...values, [name]: checked });
 		} else {
 			setValues({ ...values, [name]: value });
@@ -33,37 +62,6 @@ export const FormsSimple = () => {
 
 	const handleFormSubmit = () => {
 		validateFields();
-	};
-
-	const validateFields = () => {
-		let keys = Object.keys(values);
-		for (let key of keys) {
-			validateField(key, values[key], values[key]);
-		}
-	};
-
-	const validateField = (fieldName, value, checked) => {
-		switch (fieldName) {
-			case "firstName":
-				formErrors["firstNameRequired"] =
-					value === "" ? "Firstname is required" : "";
-				break;
-			case "lastName":
-				formErrors["lastNameRequired"] =
-					value === "" ? "Lastname is required" : "";
-				break;
-			case "email":
-				formErrors["emailRequired"] = !value ? "E-Mail is required" : "";
-				formErrors["emailValid"] =
-					value && !value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
-						? "E-Mail format is invalid"
-						: "";
-				break;
-			case "agb":
-				formErrors["agbRequired"] = !checked ? "AGB is required" : "";
-				break;
-		}
-		setFormErrors({ ...formErrors });
 	};
 
 	return (
@@ -84,6 +82,7 @@ export const FormsSimple = () => {
 				<div className="form-group">
 					<label htmlFor="gender">Gender</label>
 					<select
+						id="gender"
 						name="gender"
 						className="form-control"
 						onChange={handleInputChange}
@@ -99,15 +98,15 @@ export const FormsSimple = () => {
 					<input
 						type="text"
 						className={
-							"form-control" +
-							(formErrors["firstNameRequired"] ? " is-invalid" : "")
+							'form-control' + (formErrors.firstNameRequired ? ' is-invalid' : '')
 						}
+						id="firstName"
 						name="firstName"
 						onChange={handleInputChange}
 						value={values.firstName}
 					/>
 					<div className="invalid-feedback">
-						{formErrors["firstNameRequired"]}
+						{formErrors.firstNameRequired}
 					</div>
 				</div>
 
@@ -116,23 +115,25 @@ export const FormsSimple = () => {
 					<input
 						type="text"
 						className={
-							"form-control" +
-							(formErrors["lastNameRequired"] ? " is-invalid" : "")
+							'form-control' + (formErrors.lastNameRequired ? ' is-invalid' : '')
 						}
 						name="lastName"
 						onChange={handleInputChange}
 						value={values.lastName}
 					/>
 					<div className="invalid-feedback">
-						{formErrors["lastNameRequired"]}
+						{formErrors.lastNameRequired}
 					</div>
 				</div>
 
 				<div className="form-group">
-					<label htmlFor="birthdate">Birthdate</label>
+					<label htmlFor="birthdate">
+						Birthdate
+					</label>
 					<input
 						type="date"
 						className="form-control"
+						id="birthdate"
 						name="birthdate"
 						onChange={handleInputChange}
 						value={values.birthdate}
@@ -144,18 +145,18 @@ export const FormsSimple = () => {
 					<input
 						type="email"
 						className={
-							"form-control" +
-							(formErrors["emailRequired"] || formErrors["emailValid"]
-								? " is-invalid"
-								: "")
+							'form-control' + (formErrors.emailRequired || formErrors.emailValid
+								? ' is-invalid'
+								: '')
 						}
+						id="email"
 						name="email"
 						onChange={handleInputChange}
 						value={values.email}
 					/>
 					<div className="invalid-feedback">
-						{formErrors["emailRequired"]}
-						{formErrors["emailValid"]}
+						{formErrors.emailRequired}
+						{formErrors.emailValid}
 					</div>
 				</div>
 
@@ -163,8 +164,7 @@ export const FormsSimple = () => {
 					<input
 						type="checkbox"
 						className={
-							"form-check-input" +
-							(formErrors["agbRequired"] ? " is-invalid" : "")
+							'form-check-input' + (formErrors.agbRequired ? ' is-invalid' : '')
 						}
 						id="agb"
 						name="agb"
@@ -174,7 +174,7 @@ export const FormsSimple = () => {
 					<label className="form-check-label" htmlFor="agb">
 						AGB?
 					</label>
-					<div className="invalid-feedback">{formErrors["agbRequired"]}</div>
+					<div className="invalid-feedback">{formErrors.agbRequired}</div>
 				</div>
 
 				<div className="form-group">

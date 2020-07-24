@@ -1,9 +1,8 @@
-import React from "react";
+import React from 'react';
 import { FormControl } from '../shared/components/Form/form.models';
 import { Form } from '../shared/components/Form/Form';
 
 export const FormsGeneric = () => {
-
 	const controls = {
 		gender: new FormControl('', [], 'select', { label: 'Gender', options: [{ label: 'female', value: 'female' }, { label: 'male', value: 'male' }] }),
 		firstName: new FormControl('', ['required'], 'text', { label: 'Firstname', autoFocus: true, placeholder: 'Firstname' }),
@@ -17,7 +16,9 @@ export const FormsGeneric = () => {
 		color: new FormControl('#FFFFFF', [], 'color', { label: 'Favourite color' }),
 		time: new FormControl('', [], 'time', { label: 'Time' }),
 		file: new FormControl('', [], 'file', { label: 'File' }),
-		agb: new FormControl('', ['required'], 'checkbox', { label: 'AGB', labelPosition: 'behind', formControlClassName: 'form-check-input', formGroupClassName: 'form-check', labelClassName: 'form-check-label' })
+		agb: new FormControl('', ['required'], 'checkbox', {
+			label: 'AGB', labelPosition: 'behind', formControlClassName: 'form-check-input', formGroupClassName: 'form-check', labelClassName: 'form-check-label'
+		}),
 	};
 
 	const onFormSubmit = (values) => {
@@ -30,20 +31,20 @@ export const FormsGeneric = () => {
 
 			<Form
 				controls={controls}
-				validateOnBlur={true}
+				validateOnBlur
 				onSubmit={onFormSubmit}
 
-				renderSubmitButton={onClick =>
-					<button onClick={onClick} type="button" className="btn btn-sm btn-primary">
+				renderSubmitButton={onClick => (
+					<button type="button" onClick={onClick} className="btn btn-sm btn-primary">
 						submit
-				</button>
-				}
+					</button>
+				)}
 
-				renderResetButton={onClick =>
+				renderResetButton={onClick => (
 					<button onClick={onClick} type="button" className="btn btn-sm btn-danger ml-2">
 						reset
-				</button>
-				}
+					</button>
+				)}
 			/>
 
 		</div>

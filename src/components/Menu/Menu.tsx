@@ -13,7 +13,7 @@ function MenuComponent({ history, title }: IMenuProps) {
 		{ name: 'forms-simple', label: 'Forms simple', path: '/forms-simple' },
 		{ name: 'forms-service', label: 'FormsService', path: '/forms-service' },
 		{ name: 'forms-generic', label: 'FormsGeneric', path: '/forms-generic' },
-		{ name: 'about', label: 'About', path: '/about' }
+		{ name: 'about', label: 'About', path: '/about' },
 	];
 
 	const handleMenuBtnClick = () => {

@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { render } from 'react-dom';
-import { HashRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from 'react-router-dom';
 
 import { App } from './App';
 import './i18n/i18n';
@@ -12,7 +12,7 @@ render(
 			<App />
 		</Router>
 	</Suspense>,
-	document.getElementById("root")
+	document.getElementById('root'),
 );
 
 if (module.hot) {
