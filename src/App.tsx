@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import { withTranslation, useTranslation } from "react-i18next";
 import { Menu } from './components';
-import { Home, About, FormsSimple, FormsService, FormsGeneric } from './pages';
+import { Home, About, FormsSimple, FormsService, FormsGeneric, ShowcaseButton } from './pages';
 
 export const App = () => {
 	const [name] = useState('React Starter Template');
@@ -31,7 +31,7 @@ export const App = () => {
 					<Route exact path="/about">
 						<About />
 					</Route>
-					<Route exact path="/forms-simple">
+					{/* <Route exact path="/forms-simple">
 						<FormsSimple />
 					</Route>
 					<Route exact path="/forms-service">
@@ -39,7 +39,16 @@ export const App = () => {
 					</Route>
 					<Route exact path="/forms-generic">
 						<FormsGeneric />
-					</Route>
+					</Route> */}
+
+					<Route
+						path="/showcase"
+						render={({ match: { url } }) => (
+							<>
+								<Route path={`${url}/`} component={ShowcaseButton} exact />
+							</>
+						)}
+					/>
 
 					<Route render={() => <div>404 - Missing!</div>} />
 				</Switch>
