@@ -50,7 +50,8 @@ export const Modal = ({ children, header, footer, onHeaderCloseClick, onBackdrop
 			<div className="modal show" style={{ display: 'block' }}>
 				<div className="modal-dialog" role="document">
 					<div className="modal-content">
-						{header &&
+						{
+							header &&
 							<ModalHeader onClose={() => onHeaderCloseClick()}>
 								{header}
 							</ModalHeader>

@@ -1,9 +1,9 @@
-import React from "react";
-import { ButtonCounter } from "../components/ButtonCounter/ButtonCounter";
+import React from 'react';
+import { ButtonCounter } from '../components/ButtonCounter/ButtonCounter';
 
 export const Home = () => {
 	const handleClick = () => {
-		console.warn("button clicked");
+		console.warn('button clicked');
 	};
 
 	return (

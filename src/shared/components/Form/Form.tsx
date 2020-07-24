@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { IsEmptyValidator } from './validators/IsEmptyValidator';
 import { EmailValidator } from './validators/EmailValidtor';
 import { FormLabel } from './FormLabel';
@@ -12,9 +12,35 @@ export const Form = ({ controls, validateOnBlur, onSubmit, renderSubmitButton, r
 	const [isFormValid, setIsFormValid] = useState(false);
 	const [fields, setFields] = useState(controls);
 
+
+
+	const validateField = (fieldValue, fieldValidators) => {
+		const errors = [];
+
+		for (const validator of fieldValidators) {
+			switch (validator) {
+				case 'required':
+					if (IsEmptyValidator(fieldValue)) {
+						errors.push({ validator, message: 'This field is required' });
+					}
+					break;
+
+				case 'email':
+					if (EmailValidator(fieldValue)) {
+						errors.push({ validator, message: 'Email format is wrong' });
+					}
+					break;
+				default:
+					break;
+			}
+		}
+
+		return errors;
+	};
+
 	const handleInputChange = e => {
 		const { name, value, checked, type, files } = e.target;
-		let field = fields[name];
+		const field = fields[name];
 
 		// TODO
 		// let newValue;
@@ -39,34 +65,12 @@ export const Form = ({ controls, validateOnBlur, onSubmit, renderSubmitButton, r
 	const handleOnBlur = e => {
 		if (validateOnBlur) {
 			const { name, value, checked, type } = e.target;
-			let field = fields[name];
+			const field = fields[name];
 			field.isDirty = true;
 			field.errors = validateField(field.value, field.validators);
 			field.isValid = field.errors.length === 0;
 			setFields({ ...fields, [name]: field });
 		}
-	};
-
-	const validateField = (fieldValue, fieldValidators) => {
-		let errors = [];
-
-		for (let validator of fieldValidators) {
-			switch (validator) {
-				case 'required':
-					if (IsEmptyValidator(fieldValue)) {
-						errors.push({ validator, message: 'This field is required' });
-					}
-					break;
-
-				case 'email':
-					if (EmailValidator(fieldValue)) {
-						errors.push({ validator, message: 'Email format is wrong' });
-					}
-					break;
-			}
-		}
-
-		return errors;
 	};
 
 	const isRequired = (fieldName) => {
@@ -77,7 +81,7 @@ export const Form = ({ controls, validateOnBlur, onSubmit, renderSubmitButton, r
 
 	const isInvalid = (fieldName) => {
 		let result = false;
-		let field = fields[fieldName];
+		const field = fields[fieldName];
 		result = field.isDirty && !field.isValid;
 		return result;
 	};
@@ -92,28 +96,31 @@ export const Form = ({ controls, validateOnBlur, onSubmit, renderSubmitButton, r
 	};
 
 	const handleFormSubmit = () => {
-		for (let fieldKey of Object.keys(fields)) {
-			let field = fields[fieldKey];
+		for (const fieldKey of Object.keys(fields)) {
+			const field = fields[fieldKey];
 			field.isDirty = true;
 			field.errors = validateField(field.value, field.validators);
 			field.isValid = field.errors.length === 0;
 		}
 		setFields({ ...fields });
 
-		let isFormValid = Object.keys(fields).map(f => fields[f].isValid).every(valid => valid === false);
-		setIsFormValid(isFormValid);
+		const isValid = Object.keys(fields).map(f => fields[f].isValid).every(valid => valid === false);
+		setIsFormValid(isValid);
 
-		let keys = Object.keys(fields);
-		let values = keys.reduce((obj, f) => ({
+		const keys = Object.keys(fields);
+		const values = keys.reduce((obj, f) => ({
 			...obj,
 			[f]: fields[f].value
 		}), {});
-		onSubmit && onSubmit(values);
+
+		if (onSubmit) {
+			onSubmit(values);
+		}
 	};
 
 	const handleFormReset = () => {
-		for (let fieldKey of Object.keys(fields)) {
-			let field = fields[fieldKey];
+		for (const fieldKey of Object.keys(fields)) {
+			const field = fields[fieldKey];
 			field.value = '';
 			field.isDirty = false;
 			field.errors = [];
@@ -128,12 +135,14 @@ export const Form = ({ controls, validateOnBlur, onSubmit, renderSubmitButton, r
 
 		<form>
 
-			{Object.keys(fields).map((fieldKey, index) => {
+			{Object.keys(fields).map((fieldKey) => {
 				return (
-					<FormGroup key={index} className={fields[fieldKey].config.formGroupClassName}>
+					<FormGroup key={fieldKey} className={fields[fieldKey].config.formGroupClassName}>
 
-						{fields[fieldKey].config.labelPosition !== 'behind' && renderLabel(fieldKey, fields[fieldKey].config.label, fields[fieldKey].config.labelClassName)}
-
+						{
+							fields[fieldKey].config.labelPosition !== 'behind' &&
+							renderLabel(fieldKey, fields[fieldKey].config.label, fields[fieldKey].config.labelClassName)
+						}
 
 						{/* TODO - pass configObject instead of every single Config */}
 						<FormInput
@@ -150,7 +159,10 @@ export const Form = ({ controls, validateOnBlur, onSubmit, renderSubmitButton, r
 							placeholder={fields[fieldKey].config.placeholder}
 						/>
 
-						{fields[fieldKey].config.labelPosition === 'behind' && renderLabel(fieldKey, fields[fieldKey].config.label, fields[fieldKey].config.labelClassName)}
+						{
+							fields[fieldKey].config.labelPosition === 'behind' &&
+							renderLabel(fieldKey, fields[fieldKey].config.label, fields[fieldKey].config.labelClassName)
+						}
 
 						<FormHint hint={fields[fieldKey].config.hint} />
 
@@ -166,12 +178,12 @@ export const Form = ({ controls, validateOnBlur, onSubmit, renderSubmitButton, r
 				</div>
 				: undefined}
 
-		</form >
+		</form>
 	);
 };
 
-Form.propTypes = {
-	controls: PropTypes.object,
-	validateOnBlur: PropTypes.bool,
-	onSubmit: PropTypes.func
-};
+// Form.propTypes = {
+// 	controls: PropTypes.object,
+// 	validateOnBlur: PropTypes.bool,
+// 	onSubmit: PropTypes.func
+// };

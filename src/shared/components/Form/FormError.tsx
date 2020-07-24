@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-export const FormError = ({ className = "invalid-feedback", errors = [] }) => {
+export const FormError = ({ className = 'invalid-feedback', errors = [] }) => {
 	return (
 		<>
 			{
@@ -14,12 +14,12 @@ export const FormError = ({ className = "invalid-feedback", errors = [] }) => {
 	);
 };
 
-FormError.propTypes = {
-	className: PropTypes.string,
-	errors: PropTypes.arrayOf(
-		PropTypes.shape({
-			validator: PropTypes.string,
-			message: PropTypes.string
-		})
-	)
-};
+// FormError.propTypes = {
+// 	className: PropTypes.string,
+// 	errors: PropTypes.arrayOf(
+// 		PropTypes.shape({
+// 			validator: PropTypes.string,
+// 			message: PropTypes.string
+// 		})
+// 	)
+// };

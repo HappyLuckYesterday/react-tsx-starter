@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface IButtonProps {
 	children: React.ReactNode;
@@ -23,7 +23,6 @@ export const Button = ({ children }: IButtonProps) => {
 			disabled={disabled}
 			onClick={(e) => handleClick(e)}>
 			{children}
-		</button >
-
+		</button>
 	);
 };

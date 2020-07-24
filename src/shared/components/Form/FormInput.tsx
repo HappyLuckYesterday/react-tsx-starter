@@ -1,12 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 export const FormInput = ({
 	value,
 	name,
 	type,
 	placeholder,
-	className = "form-control",
+	className = 'form-control',
 	isValid,
 	options = [],
 	textareaOptions,
@@ -41,7 +41,7 @@ export const FormInput = ({
 					id={name}
 					name={name}
 					type={type}
-					className={className + (!isValid ? " is-invalid" : "")}
+					className={className + (!isValid ? ' is-invalid' : '')}
 					value={value}
 					autoComplete="new-password"
 					autoFocus={autoFocus}
@@ -51,11 +51,12 @@ export const FormInput = ({
 				/>
 			}
 
-			{type === 'textarea' &&
+			{
+				type === 'textarea' &&
 				<textarea
 					id={name}
 					name={name}
-					className={className + (!isValid ? " is-invalid" : "")}
+					className={className + (!isValid ? ' is-invalid' : '')}
 					value={value}
 					autoFocus={autoFocus}
 					onChange={onChange}
@@ -65,39 +66,42 @@ export const FormInput = ({
 				/>
 			}
 
-			{type === 'select' ?
+			{
+				type === 'select' &&
 				<select
 					id={name}
 					name={name}
-					className={className + (!isValid ? " is-invalid" : "")}
+					className={className + (!isValid ? ' is-invalid' : '')}
 					value={value}
 					autoFocus={autoFocus}
 					onChange={onChange}
 				>
 					<option value="">choose</option>
-					{options.map((option, index) =>
-						<option key={index} value={option.value}>
+					{options.map((option) =>
+						<option key={option.value} value={option.value}>
 							{option.label}
 						</option>
 					)}
 				</select>
-				: undefined}
+			}
 
-			{type === 'checkbox' ?
+			{
+				type === 'checkbox' &&
 				<input
 					id={name}
 					name={name}
 					type="checkbox"
-					className={className + (!isValid ? " is-invalid" : "")}
+					className={className + (!isValid ? ' is-invalid' : '')}
 					onChange={onChange}
 					checked={value}
 				/>
-				: undefined}
+			}
 
-			{type === 'radio' ?
+			{
+				type === 'radio' &&
 				<>
-					{options.map((option, index) =>
-						<div className="form-check" key={index}>
+					{options.map((option) =>
+						<div className="form-check" key={option.id}>
 							<input
 								id={option.id}
 								name={name}
@@ -113,22 +117,8 @@ export const FormInput = ({
 						</div>
 					)}
 				</>
-				: undefined}
+			}
 
 		</>
 	);
-};
-
-
-FormInput.propTypes = {
-	value: PropTypes.string,
-	name: PropTypes.string,
-	type: PropTypes.string,
-	placeholder: PropTypes.string,
-	className: PropTypes.string,
-	isValid: PropTypes.bool,
-	options: PropTypes.array,
-	autoFocus: PropTypes.bool,
-	onChange: PropTypes.func,
-	onBlur: PropTypes.func
 };

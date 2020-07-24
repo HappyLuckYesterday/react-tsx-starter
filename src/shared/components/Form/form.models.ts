@@ -1,3 +1,19 @@
+export class FormControlConfig {
+	// formGroupClassName
+	// formControlClassName
+	// labelClassName
+	// label
+	// options
+	// hint
+	// placeHolder
+	// disabled
+	// readonly
+	// fileOptions
+	// autofocus
+	// fileOptions { accept, size }
+	// textAreaOption - rows, resize
+}
+
 export class FormControl {
 	constructor(value, validators = [], type, config = {}) {
 		this.value = value;
@@ -14,20 +30,4 @@ export class FormControl {
 	validators = [];
 
 	config = new FormControlConfig();
-}
-
-export class FormControlConfig {
-	// formGroupClassName
-	// formControlClassName
-	// labelClassName
-	// label
-	// options
-	// hint
-	// placeHolder
-	// disabled
-	// readonly
-	// fileOptions
-	// autofocus
-	// fileOptions { accept, size }
-	// textAreaOption - rows, resize
 }
