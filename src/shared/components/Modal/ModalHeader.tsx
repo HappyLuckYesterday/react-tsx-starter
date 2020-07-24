@@ -8,7 +8,9 @@ interface IModalHeaderProps {
 export const ModalHeader = ({ children, onClose }: IModalHeaderProps) => {
 
 	const handleClick = () => {
-		onClose && onClose();
+		if (onClose) {
+			onClose();
+		}
 	};
 
 	return (

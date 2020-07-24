@@ -4,10 +4,4 @@ interface IModalBodyProps {
 	children: React.ReactNode;
 }
 
-export const ModalBody = ({ children }: IModalBodyProps) => {
-	return (
-		<div className="modal-body">
-			{children}
-		</div>
-	);
-};
+export const ModalBody = ({ children }: IModalBodyProps) => <div className="modal-body">{children}</div>;

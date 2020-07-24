@@ -15,6 +15,27 @@ export const Modal = ({ children, header, footer, onHeaderCloseClick, onBackdrop
 
 	let clickListener: EventListener;
 
+	const removeClickListener = () => {
+		if (clickListener) {
+			document.removeEventListener('click', clickListener);
+			clickListener = undefined;
+		}
+	};
+
+	const initClickBackdropListener = () => {
+		clickListener = (e: Event) => {
+			const modalDialog = document.querySelector('.modal-dialog');
+			const clickedOutside = modalDialog && !modalDialog.contains(e.target as Node);
+			if (clickedOutside) {
+				removeClickListener();
+				if (onBackdropClick) {
+					onBackdropClick();
+				}
+			}
+		};
+		document.addEventListener('click', clickListener);
+	};
+
 	useEffect(() => {
 		document.body.classList.add('modal-open');
 		initClickBackdropListener();
@@ -23,25 +44,6 @@ export const Modal = ({ children, header, footer, onHeaderCloseClick, onBackdrop
 			removeClickListener();
 		};
 	}, []);
-
-	const initClickBackdropListener = () => {
-		clickListener = (e: Event) => {
-			const modalDialog = document.querySelector(".modal-dialog");
-			const clickedOutside = modalDialog && !modalDialog.contains(e.target as Node);
-			if (clickedOutside) {
-				removeClickListener();
-				onBackdropClick && onBackdropClick();
-			}
-		};
-		document.addEventListener("click", clickListener);
-	};
-
-	const removeClickListener = () => {
-		if (clickListener) {
-			document.removeEventListener("click", clickListener);
-			clickListener = undefined;
-		}
-	};
 
 	return (
 		<>

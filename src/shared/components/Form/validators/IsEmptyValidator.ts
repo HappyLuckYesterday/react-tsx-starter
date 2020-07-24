@@ -1,3 +1,1 @@
-export const IsEmptyValidator = (value) => {
-	return value === "";
-};
+export const IsEmptyValidator = (value) => value === '';
