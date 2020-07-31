@@ -12,8 +12,6 @@ export const Form = ({ controls, validateOnBlur, onSubmit, renderSubmitButton, r
 	const [isFormValid, setIsFormValid] = useState(false);
 	const [fields, setFields] = useState(controls);
 
-
-
 	const validateField = (fieldValue, fieldValidators) => {
 		const errors = [];
 

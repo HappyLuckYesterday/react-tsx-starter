@@ -21,7 +21,8 @@ export const Button = ({ children }: IButtonProps) => {
 			type="button"
 			className={getCssClasses()}
 			disabled={disabled}
-			onClick={(e) => handleClick(e)}>
+			onClick={(e) => handleClick(e)}
+		>
 			{children}
 		</button>
 	);
