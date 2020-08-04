@@ -1,10 +1,10 @@
 const webpack = require('webpack');
 const path = require('path');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env, argv) => {
@@ -20,7 +20,7 @@ module.exports = (env, argv) => {
 			path: path.resolve(__dirname, 'dist'),
 		},
 
-		devtool: "source-map",
+		devtool: 'source-map',
 
 		resolve: { extensions: ['.ts', '.tsx', '.js', '.jsx'] },
 
@@ -31,8 +31,8 @@ module.exports = (env, argv) => {
 					test: /\.scss$/,
 					use: [
 						MiniCssExtractPlugin.loader,
-						"css-loader",
-						"sass-loader"
+						'css-loader',
+						'sass-loader'
 					]
 				},
 				{ test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, loader: 'file-loader?name=assets/[name].[ext]' },
@@ -55,16 +55,16 @@ module.exports = (env, argv) => {
 		plugins: [
 			new CleanWebpackPlugin(),
 			new HtmlWebpackPlugin({
-				template: "./index.html",
+				template: './index.html',
 				title: 'React Tsx Template',
-				filename: "index.html",
-				chunksSortMode: "manual",
+				filename: 'index.html',
+				chunksSortMode: 'manual',
 				chunks: ['vendors', 'app'],
-				// favicon: 'favicon.ico'
+				favicon: 'favicon.ico'
 			}),
 			new MiniCssExtractPlugin({
-				filename: "style.css",
-				chunkFilename: "style.css"
+				filename: 'style.css',
+				chunkFilename: 'style.css'
 			}),
 			new CopyWebpackPlugin({
 				patterns: [
@@ -82,7 +82,7 @@ module.exports = (env, argv) => {
 		optimization: {
 			splitChunks: {
 				cacheGroups: {
-					commons: { test: /[\\/]node_modules[\\/]/, name: "vendors", chunks: "all" }
+					commons: { test: /[\\/]node_modules[\\/]/, name: 'vendors', chunks: 'all' }
 				}
 			},
 			minimizer: [
@@ -96,5 +96,5 @@ module.exports = (env, argv) => {
 				new OptimizeCSSAssetsPlugin({})
 			]
 		}
-	}
-}
+	};
+};
