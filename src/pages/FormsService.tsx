@@ -14,12 +14,11 @@ export const FormsService = () => {
 	});
 
 	const handleInputChange = e => {
-		console.info(CNAME, 'handleInputChange');
 		setValues(formService.handleInputChange(e, values));
 	};
 
 	const validateFields = () => {
-		console.info(CNAME, 'handleFormSubmit'); let valid = false;
+		let valid = false;
 		const keys = Object.keys(values);
 
 		valid = keys

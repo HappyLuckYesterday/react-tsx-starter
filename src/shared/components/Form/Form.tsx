@@ -62,7 +62,7 @@ export const Form = ({ controls, validateOnBlur, onSubmit, renderSubmitButton, r
 
 	const handleOnBlur = e => {
 		if (validateOnBlur) {
-			const { name, value, checked, type } = e.target;
+			const { name } = e.target; // value, checked, type
 			const field = fields[name];
 			field.isDirty = true;
 			field.errors = validateField(field.value, field.validators);

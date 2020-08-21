@@ -1,4 +1,4 @@
-const CNAME = 'FormService';
+// const CLASSNAME = 'FormService';
 class FormService {
 	handleInputChange = (e, values) => {
 		let result;

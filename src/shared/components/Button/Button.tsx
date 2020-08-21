@@ -12,8 +12,9 @@ export const Button = ({ children }: IButtonProps) => {
 
 	const disabled = false;
 
-	const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-		alert(e);
+	// e: React.MouseEvent<HTMLButtonElement>
+	const handleClick = () => {
+		// alert(e);
 	};
 
 	return (
