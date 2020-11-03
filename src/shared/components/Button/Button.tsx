@@ -12,9 +12,9 @@ export const Button = ({ children }: IButtonProps) => {
 
 	const disabled = false;
 
-	// e: React.MouseEvent<HTMLButtonElement>
-	const handleClick = () => {
-		// alert(e);
+	const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+		// eslint-disable-next-line no-console
+		console.warn(e);
 	};
 
 	return (
