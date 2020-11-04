@@ -2,9 +2,10 @@ import React from 'react';
 
 interface IButtonProps {
 	children: React.ReactNode;
+	onClick?: (e: React.MouseEvent) => void;
 }
 
-export const Button = ({ children }: IButtonProps) => {
+export const Button = ({ children, onClick }: IButtonProps) => {
 
 	const getCssClasses = () => {
 		return '';
@@ -13,8 +14,7 @@ export const Button = ({ children }: IButtonProps) => {
 	const disabled = false;
 
 	const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-		// eslint-disable-next-line no-console
-		console.warn(e);
+		onClick(e);
 	};
 
 	return (

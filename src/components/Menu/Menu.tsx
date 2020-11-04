@@ -10,6 +10,7 @@ function MenuComponent({ history, title }: IMenuProps) {
 
 	const menuItems = [
 		{ name: 'home', label: "Home", path: "/" },
+		{ name: 'components', label: "Components", path: "/components" },
 		{ name: "about", label: "About", path: "/about" },
 	];
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ButtonCounter } from '../components/ButtonCounter/ButtonCounter';
+import { Button } from '../shared/components/Button/Button';
 
 export const Home = () => {
 	const handleClick = () => {
@@ -16,6 +17,8 @@ export const Home = () => {
 			</ul>
 
 			<ButtonCounter name="Hello ButtonCounter" onClick={handleClick} />
+
+			<Button>click me</Button>
 
 		</div>
 	);
