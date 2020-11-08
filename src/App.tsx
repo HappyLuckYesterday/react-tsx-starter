@@ -1,20 +1,20 @@
 
-import React, { useEffect, useState } from 'react';
-import { useTranslation, withTranslation } from 'react-i18next';
+import React, { useState } from 'react';
+import { withTranslation } from 'react-i18next';
 import { Route, Switch } from 'react-router-dom';
 import { AppContext } from './AppContext';
 import { ISideBarItem, SideBar } from './components';
 import { About, Home, ShowcaseButton } from './pages';
-import { AppBar, HttpService } from './shared';
+import { AppBar, HttpService, LoggerService } from './shared';
 
 export const App = () => {
 	const [name] = useState('Brosmos');
 	const [menuItems] = useState<Array<ISideBarItem>>([{ label: 'Test' }]);
-	const httpService = new HttpService();
 
-	useEffect(() => {
-		httpService.get('./public/test.json').then(d => console.warn(d)).catch(err => console.warn(err));
-	}, []);
+	const services = {
+		httpService: new HttpService(),
+		loggerService: new LoggerService()
+	}
 
 	// const { t, i18n } = useTranslation();
 
@@ -23,7 +23,7 @@ export const App = () => {
 	// };
 
 	return (
-		<AppContext.Provider value={{ httpService }}>
+		<AppContext.Provider value={services}>
 
 			<AppBar>
 				<div className="container">

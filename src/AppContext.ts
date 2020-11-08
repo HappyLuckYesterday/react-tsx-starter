@@ -1,4 +1,14 @@
 import React from "react";
-import { HttpService } from './shared';
+import { HttpService, LoggerService } from './shared';
 
-export const AppContext = React.createContext<{ httpService: HttpService }>(null);
+// TODO - search if possible default value?
+
+// const services = {
+// 	httpService: new HttpService(),
+// 	loggerService: new LoggerService(),
+// }
+
+export const AppContext = React.createContext<{
+	httpService: HttpService,
+	loggerService: LoggerService
+}>(null);
