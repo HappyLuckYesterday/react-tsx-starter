@@ -31,15 +31,6 @@ export const App = () => {
 					<Route exact path="/about">
 						<About />
 					</Route>
-					{/* <Route exact path="/forms-simple">
-						<FormsSimple />
-					</Route>
-					<Route exact path="/forms-service">
-						<FormsService />
-					</Route>
-					<Route exact path="/forms-generic">
-						<FormsGeneric />
-					</Route> */}
 
 					<Route
 						path="/showcase"

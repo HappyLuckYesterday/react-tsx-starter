@@ -1,12 +1,7 @@
 import React from 'react';
-import { ButtonCounter } from '../components/ButtonCounter/ButtonCounter';
 import { Button } from '../shared/components/Button/Button';
 
 export const Home = () => {
-	const handleClick = () => {
-		console.warn('button clicked');
-	};
-
 	return (
 		<div>
 			<h2>Home</h2>
@@ -16,10 +11,9 @@ export const Home = () => {
 				<li>Twitter Bootstrap</li>
 			</ul>
 
-			<ButtonCounter name="Hello ButtonCounter" onClick={handleClick} />
-
-			<Button>click me</Button>
-
+			<Button onClick={() => alert('clicked')}>
+				click me
+			</Button>
 		</div>
 	);
 };
