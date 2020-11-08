@@ -18,7 +18,27 @@ export const App = () => {
 	return (
 		<>
 			<SideBar items={menuItems} />
-			<ShowcaseButton />
+
+			<Switch>
+				<Route exact path="/">
+					<Home />
+				</Route>
+
+				<Route
+					path="/components"
+					render={({ match: { url } }) => (
+						<>
+							<Route path={`${url}/button`} component={ShowcaseButton} exact />
+						</>
+					)}
+				/>
+
+				<Route exact path="/about">
+					<About />
+				</Route>
+
+				<Route render={() => <div>404 - Missing!</div>} />
+			</Switch>
 
 			{/* <div className="p-2">
 				<div>

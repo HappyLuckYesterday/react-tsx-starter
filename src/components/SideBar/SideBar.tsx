@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ISideBarItem } from './SideBar.interfaces';
 import './Sidebar.scss';
 
@@ -11,7 +11,7 @@ export const SideBar = ({
 }: ISideBarProps) => {
 
 	return (
-		<div className="sidebar">
+		<div className="nav-sidebar">
 			<ul>
 				{
 					items.map(item =>
