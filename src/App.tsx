@@ -1,23 +1,26 @@
 import React, { useState } from 'react';
 import { useTranslation, withTranslation } from 'react-i18next';
 import { Route, Switch } from 'react-router-dom';
-import { Menu } from './components';
+import { SideBar } from './components';
+import { ISideBarItem } from './components/SideBar/SideBar.interfaces';
 import { About, Home, ShowcaseButton } from './pages';
 
 export const App = () => {
-	const [name] = useState('React Starter Template');
+	const [name] = useState('Brosmos');
+	const [menuItems] = useState<Array<ISideBarItem>>([{ label: 'Test' }]);
 
-	const { t, i18n } = useTranslation();
+	// const { t, i18n } = useTranslation();
 
-	const changeLanguage = (lng) => {
-		i18n.changeLanguage(lng);
-	};
+	// const changeLanguage = (lng) => {
+	// 	i18n.changeLanguage(lng);
+	// };
 
 	return (
-		<div>
-			<Menu title={name} />
+		<>
+			<SideBar items={menuItems} />
+			<ShowcaseButton />
 
-			<div className="p-2">
+			{/* <div className="p-2">
 				<div>
 					<h1>{t('welcomeMsg')}</h1>
 					<button type="button" className="btn btn-secondary" onClick={() => changeLanguage('de')}>de</button>
@@ -43,8 +46,8 @@ export const App = () => {
 
 					<Route render={() => <div>404 - Missing!</div>} />
 				</Switch>
-			</div>
-		</div>
+			</div> */}
+		</>
 	);
 };
 
