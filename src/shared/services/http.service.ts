@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // const CLASSNAME = 'HttpService';
-class HttpService {
+export class HttpService {
 	get<T>(url: string, params?: any): Promise<T> {
 		return axios.get(url, { params: params });
 	}
@@ -19,5 +19,3 @@ class HttpService {
 	}
 
 }
-
-export default new HttpService();

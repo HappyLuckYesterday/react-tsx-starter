@@ -1,5 +1,5 @@
 // const CLASSNAME = 'FormService';
-class FormService {
+export class FormService {
 	handleInputChange = (e, values) => {
 		let result;
 		const { name, value, checked, files } = e.target;
@@ -17,5 +17,3 @@ class FormService {
 		return result;
 	}
 }
-
-export default new FormService();

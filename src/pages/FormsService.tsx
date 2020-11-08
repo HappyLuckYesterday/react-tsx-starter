@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import formService from '../shared/services/form.service';
+import { FormService } from '../shared';
 
 const CNAME = 'FormsService';
 export const FormsService = () => {
+
+	const formService = new FormService();
+
 	const [values, setValues] = useState({
 		gender: { value: '', label: 'Gender', validators: ['required'] },
 		firstName: { value: '', label: 'Firstname', validators: ['required'] },
