@@ -19,6 +19,7 @@ export const AppBar = ({
 		const cssClasses: Array<string> = [];
 		cssClasses.push(`navbar navbar-expand`);
 		cssClasses.push(`bg-${color}`);
+		cssClasses.push('navbar-dark');
 		return cssClasses.join(' ');
 	};
 

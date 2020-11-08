@@ -12,6 +12,7 @@ export const SideBar = ({
 
 	return (
 		<div className="nav-sidebar">
+			<div>TITLE</div>
 			<ul>
 				{
 					items.map(item =>

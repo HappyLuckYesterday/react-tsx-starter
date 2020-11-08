@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import { SideBar } from './components';
 import { ISideBarItem } from './components/SideBar/SideBar.interfaces';
 import { About, Home, ShowcaseButton } from './pages';
+import { AppBar } from './shared/components/AppBar/AppBar';
 
 export const App = () => {
 	const [name] = useState('Brosmos');
@@ -17,28 +18,39 @@ export const App = () => {
 
 	return (
 		<>
-			<SideBar items={menuItems} />
+			<AppBar>
+				<div className="container">
+					<a className="navbar-brand">
+						asdf
+						</a>
+				</div>
+			</AppBar>
 
-			<Switch>
-				<Route exact path="/">
-					<Home />
-				</Route>
+			<div className="main">
+				<SideBar items={menuItems} />
 
-				<Route
-					path="/components"
-					render={({ match: { url } }) => (
-						<>
-							<Route path={`${url}/button`} component={ShowcaseButton} exact />
-						</>
-					)}
-				/>
+				<Switch>
+					<Route exact path="/">
+						<Home />
+					</Route>
 
-				<Route exact path="/about">
-					<About />
-				</Route>
+					<Route
+						path="/components"
+						render={({ match: { url } }) => (
+							<>
+								<Route path={`${url}/button`} component={ShowcaseButton} exact />
+							</>
+						)}
+					/>
 
-				<Route render={() => <div>404 - Missing!</div>} />
-			</Switch>
+					<Route exact path="/about">
+						<About />
+					</Route>
+
+					<Route render={() => <div>404 - Missing!</div>} />
+				</Switch>
+
+			</div>
 
 			{/* <div className="p-2">
 				<div>
@@ -48,13 +60,6 @@ export const App = () => {
 				</div>
 
 				<Switch>
-					<Route exact path="/">
-						<Home />
-					</Route>
-					<Route exact path="/about">
-						<About />
-					</Route>
-
 					<Route
 						path="/showcase"
 						render={({ match: { url } }) => (

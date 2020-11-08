@@ -12,7 +12,7 @@ render(
 			<App />
 		</Router>
 	</Suspense>,
-	document.getElementById('root'),
+	document.getElementById('app'),
 );
 
 if (module.hot) {
