@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+
+import React, { useEffect, useState } from 'react';
 import { useTranslation, withTranslation } from 'react-i18next';
 import { Route, Switch } from 'react-router-dom';
 import { SideBar } from './components';
 import { ISideBarItem } from './components/SideBar/SideBar.interfaces';
 import { About, Home, ShowcaseButton } from './pages';
 import { AppBar } from './shared/components/AppBar/AppBar';
+import httpService from './shared/services/http.service';
 
 export const App = () => {
 	const [name] = useState('Brosmos');
 	const [menuItems] = useState<Array<ISideBarItem>>([{ label: 'Test' }]);
+
+	useEffect(() => {
+		httpService.get('./public/test.json').then(d => console.warn(d)).catch(err => console.warn(err));
+	}, []);
 
 	// const { t, i18n } = useTranslation();
 
@@ -20,9 +26,7 @@ export const App = () => {
 		<>
 			<AppBar>
 				<div className="container">
-					<a className="navbar-brand">
-						asdf
-						</a>
+					<a className="navbar-brand">{name}</a>
 				</div>
 			</AppBar>
 

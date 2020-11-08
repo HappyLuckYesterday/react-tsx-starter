@@ -11,10 +11,6 @@ export const AppBar = ({
 	color = COLOR.primary,
 }: IAppBarProps) => {
 
-	useEffect(() => {
-		console.warn('init');
-	}, []);
-
 	const getCssClasses = () => {
 		const cssClasses: Array<string> = [];
 		cssClasses.push(`navbar navbar-expand`);

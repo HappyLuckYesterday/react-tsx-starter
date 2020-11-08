@@ -17,7 +17,7 @@ module.exports = (env, argv) => {
 		output: {
 			filename: '[name].[contenthash].bundle.js',
 			chunkFilename: '[name].[contenthash].bundle.js',
-			path: path.resolve(__dirname, 'dist'),
+			path: path.resolve(__dirname, 'dist')
 		},
 
 		devtool: 'source-map',
