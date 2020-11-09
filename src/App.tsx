@@ -6,6 +6,7 @@ import { AppContext } from './AppContext';
 import { ISideBarItem, SideBar } from './components';
 import { About, Home, ShowcaseButton } from './pages';
 import { AppBar, HttpService, LoggerService } from './shared';
+import { LanguageService } from './shared/services/language.service';
 
 export const App = () => {
 	const [name] = useState('Brosmos');
@@ -13,22 +14,15 @@ export const App = () => {
 
 	const services = {
 		httpService: new HttpService(),
-		loggerService: new LoggerService()
+		loggerService: new LoggerService(),
+		languageService: new LanguageService()
 	}
-
-	// const { t, i18n } = useTranslation();
-
-	// const changeLanguage = (lng) => {
-	// 	i18n.changeLanguage(lng);
-	// };
 
 	return (
 		<AppContext.Provider value={services}>
 
 			<AppBar>
-				<div className="container">
-					<a className="navbar-brand">{name}</a>
-				</div>
+				<a className="navbar-brand">{name}</a>
 			</AppBar>
 
 			<div className="main">
