@@ -12,14 +12,14 @@ export const App = () => {
 	const [name] = useState('Brosmos');
 	const [menuItems] = useState<Array<ISideBarItem>>([{ label: 'Test' }]);
 
-	const services = {
+	const context = {
 		httpService: new HttpService(),
 		loggerService: new LoggerService(),
 		languageService: new LanguageService()
 	}
 
 	return (
-		<AppContext.Provider value={services}>
+		<AppContext.Provider value={context}>
 
 			<AppBar>
 				<a className="navbar-brand">{name}</a>
@@ -29,9 +29,7 @@ export const App = () => {
 				<SideBar items={menuItems} />
 
 				<Switch>
-					<Route exact path="/">
-						<Home />
-					</Route>
+					<Route exact path="/"><Home /></Route>
 
 					<Route
 						path="/components"
@@ -42,36 +40,11 @@ export const App = () => {
 						)}
 					/>
 
-					<Route exact path="/about">
-						<About />
-					</Route>
-
+					<Route exact path="/about"><About /></Route>
 					<Route render={() => <div>404 - Missing!</div>} />
 				</Switch>
 
 			</div>
-
-			{/* <div className="p-2">
-				<div>
-					<h1>{t('welcomeMsg')}</h1>
-					<button type="button" className="btn btn-secondary" onClick={() => changeLanguage('de')}>de</button>
-					<button type="button" className="btn btn-secondary" onClick={() => changeLanguage('en')}>en</button>
-				</div>
-
-				<Switch>
-					<Route
-						path="/showcase"
-						render={({ match: { url } }) => (
-							<>
-								<Route path={`${url}/`} component={ShowcaseButton} exact />
-							</>
-						)}
-					/>
-
-					<Route render={() => <div>404 - Missing!</div>} />
-				</Switch>
-			</div> */}
-
 		</AppContext.Provider>
 	);
 };
