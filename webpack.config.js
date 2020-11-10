@@ -28,7 +28,7 @@ module.exports = (env, argv) => {
 
 		module: {
 			rules: [
-				{ test: /\.tsx?$/, loader: 'ts-loader' }, // , options: { transpileOnly: true }
+				{ test: /\.tsx?$/, loader: 'babel-loader' }, // , options: { transpileOnly: true }
 				{
 					test: /\.scss$/,
 					use: [
