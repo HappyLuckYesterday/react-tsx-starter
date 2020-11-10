@@ -1,3 +1,4 @@
+import 'react-hot-loader';
 import React, { Suspense } from 'react';
 import { render } from 'react-dom';
 import { HashRouter as Router } from 'react-router-dom';
@@ -15,6 +16,6 @@ render(
 	document.getElementById('app'),
 );
 
-// if (module.hot) {
-// 	module.hot.accept();
-// }
+if (module.hot) {
+	module.hot.accept();
+}
