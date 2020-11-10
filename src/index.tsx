@@ -1,4 +1,4 @@
-import 'react-hot-loader';
+// import 'react-hot-loader';
 import React, { Suspense } from 'react';
 import { render } from 'react-dom';
 import { HashRouter as Router } from 'react-router-dom';
