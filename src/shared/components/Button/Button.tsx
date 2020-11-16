@@ -19,7 +19,8 @@ export const Button = ({
 	disabled,
 	isRounded,
 	isActive,
-	onClick, variant
+	onClick,
+	variant
 }: IButtonProps) => {
 
 	useEffect(() => {
