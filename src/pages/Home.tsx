@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '../AppContext';
+import { ButtonCounter } from '../components/ButtonCounter/ButtonCounter';
 import { Button } from '../shared/components/Button/Button';
 
 export const Home = () => {
@@ -26,6 +27,7 @@ export const Home = () => {
 			<button type="button" className="btn btn-secondary" onClick={() => changeLanguage('de')}>de</button>
 			<button type="button" className="btn btn-secondary" onClick={() => changeLanguage('en')}>en</button>
 
+			<ButtonCounter name="some name" />
 
 			<ul>
 				<li>Different Components (Basic, Interactive, Functional)</li>

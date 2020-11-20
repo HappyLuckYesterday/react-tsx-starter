@@ -82,9 +82,9 @@ module.exports = (env, argv) => {
 					},
 				]
 			}),
-			new webpack.DefinePlugin({
-				// define environment vars here
-			})
+			// new webpack.DefinePlugin({
+			// 	// define environment vars here
+			// })
 		],
 
 		optimization: {
